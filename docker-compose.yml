@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  server:
+    build:
+      context: ./server_flask
+      dockerfile: Dockerfile
+    container_name: server
+    env_file: variables.env
+    depends_on: 
+      - db
+    links:
+      - db
+    ports:
+      - 6000:6000
+    networks:
+      - backend
+    restart: always
+
+  db:
+    build:
+      context: ./generate_database
+      dockerfile: Dockerfile
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: my_secret_password
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_user_pass
+    ports:
+      - 6033:3306
+    restart: always
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - frontend
+      - backend
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+    networks:
+      - frontend
+
+volumes:
+  dbdata:
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge

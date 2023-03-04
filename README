@@ -1,0 +1,51 @@
+Nume: Dragne Lavinia-Stefana
+Grupa: 334 CA
+
+				Sisteme de programe pentru retele de calculatoare
+			     	   	Tema #2 - REST API & Docker
+
+
+	
+	* Am folosit pentru partea de baze de date, MySQL si ca utilitar de gestiune phpMyAdmin.
+	* Pentru server am folosit Flask si Python.	
+	* Directorul generate_database este dedicat bazei de date. In el se afla un Dockerfile pentru
+	generarea imaginii bazei de date si un fisier sql pentru regulile de creare a tabelelor din
+	baza de date.
+	* Directorul server_flask contine codul sursa al serverului, ce este necesar a fi instalat,
+	in fisierul requirements.txt si Dockerfile-ul necesar generarii imaginii.
+	* In docker-compose am realizat 2 retele de Docker, utilitatul de baze de date fiind in
+	reteau frontend, iar api-ul in reteaua backend.
+	* Am folosit volume, pentru a avea o baza de date persistenta.
+
+
+	* Functionalitate:
+	- Toate cerintele temei au fost implementate.
+
+
+	* Referinte:
+	- Laboratoarele de SPRC
+	- https://tecadmin.net/docker-compose-for-mysql-with-phpmyadmin/ -> docker-compose
+	- https://jojozhuang.github.io/architecture/creating-mysql-image-with-docker-file/ ->
+ 	Dockerfile pt bazele de date 
+	- https://www.w3schools.com/python/python_mysql_getstarted.asp -> cereri
+
+	
+	
+	
+ 
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
